@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Peça suas comidas favoritas com praticidade e receba em casa."
+    >
+
+    <title>FoodExpress | Delivery de Comida</title>
+
+    <!-- Arquivo de estilos -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ícones -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Arquivo JavaScript -->
+    <script src="javascript.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+    <header class="header" id="inicio">
+
+        <div class="container header-content">
+
+            <a href="#inicio" class="logo" aria-label="FoodExpress - Início">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Food<span class="logo-highlight">Express</span></span>
+            </a>
+
+            <nav class="navigation" id="navigation">
+                <a href="#inicio" class="nav-link active">Início</a>
+                <a href="#categorias" class="nav-link">Categorias</a>
+                <a href="#cardapio" class="nav-link">Cardápio</a>
+                <a href="#sobre" class="nav-link">Sobre nós</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <button
+                    class="icon-button search-toggle"
+                    id="search-toggle"
+                    type="button"
+                    aria-label="Pesquisar produtos"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button
+                    class="cart-button"
+                    id="open-cart"
+                    type="button"
+                    aria-label="Abrir carrinho"
+                >
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Carrinho</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+
+                <button
+                    class="login-button"
+                    id="open-login"
+                    type="button"
+                >
+                    Entrar
+                </button>
+
+                <button
+                    class="menu-toggle"
+                    id="menu-toggle"
+                    type="button"
+                    aria-label="Abrir menu"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <button id="theme-toggle" class="theme-toggle"
+                type="button" aria-label="Ativar modo escuro">
+                🌙
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Barra de pesquisa -->
+        <div class="search-bar" id="search-bar" hidden>
+            <div class="container">
+                <label for="search-input">O que você deseja comer?</label>
+
+                <div class="search-field">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Busque por pratos, lanches..."
+                        maxlength="80"
+                    >
+
+                    <button type="button" id="clear-search">
+                        Limpar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             BANNER PRINCIPAL
+        ========================== -->
+        <section class="hero">
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="hero-tag">
+                        <i class="fa-solid fa-bolt"></i>
+                        Entrega rápida e segura
+                    </span>
+
+                    <h1>
+                        Sua comida favorita,
+                        <span>na sua porta.</span>
+                    </h1>
+
+                    <p>
+                        Descubra sabores incríveis, encontre seus pratos
+                        favoritos e receba tudo sem sair de casa.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#cardapio" class="primary-button">
+                            Pedir agora
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                        <a href="#categorias" class="secondary-button">
+                            Ver cardápio
+                        </a>
+                    </div>
+
+                    <div class="hero-benefits">
+
+                        <div class="benefit">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <strong>30–45 min</strong>
+                                <span>Tempo estimado</span>
+                            </div>
+                        </div>
+
+                        <div class="benefit">
+                            <i class="fa-solid fa-star"></i>
+                            <div>
+                                <strong>4,9 de 5</strong>
+                                <span>Clientes satisfeitos</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=85"
+                        alt="Pizza preparada com ingredientes frescos"
+                    >
+
+                    <div class="floating-card">
+                        <div class="floating-icon">
+                            <i class="fa-solid fa-motorcycle"></i>
+                        </div>
+
+                        <div>
+                            <strong>Entrega rápida</strong>
+                            <span>Seu pedido a caminho!</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             LOCALIZAÇÃO DE ENTREGA
+        ========================== -->
+        <section class="delivery-location">
+            <div class="container location-content">
+
+                <div class="location-info">
+                    <div class="location-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div>
+                        <span>Entregar em</span>
+                        <strong id="delivery-address">
+                            Informe seu endereço
+                        </strong>
+                    </div>
+                </div>
+
+                <button
+                    class="text-button"
+                    id="open-address"
+                    type="button"
+                >
+                    Alterar endereço
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             CATEGORIAS
+        ========================== -->
+        <section class="categories-section section" id="categorias">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">ESCOLHA SEU FAVORITO</span>
+                        <h2>Explore as categorias</h2>
+                        <p>Encontre o que combina com sua fome.</p>
+                    </div>
+
+                    <a href="#cardapio" class="view-all">
+                        Ver cardápio completo
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="categories-grid">
+
+                    <button
+                        class="category-card active"
+                        type="button"
+                        data-category="todos"
+                    >
+                        <span class="category-image category-all">
+                            <i class="fa-solid fa-utensils"></i>
+                        </span>
+                        <span class="category-name">Todos</span>
+                    </button>
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="hamburguer"
+                    >
+                        <span class="category-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300&q=80"
+                                alt=""
+                            >
+                        </span>
+                        <span class="category-name">Hambúrgueres</span>
+                    </button>
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="pizza"
+                    >
+                        <span class="category-image">
+                            <img
+                                src="https://images.unsplash.com/photo- pizza"
+                                alt="Pizza"
+                            >
+                        </span>
+                        <span class="category-name">Pizzas</span>
+                    </button>
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="sushi"
+                    >
+                        <span class="category-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=300&q=80"
+                                alt=""
+                            >
+                        </span>
+                        <span class="category-name">Sushi</span>
+                    </button>
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="sobremesa"
+                    >
+                        <span class="category-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=300&q=80"
+                                alt=""
+                            >
+                        </span>
+                        <span class="category-name">Sobremesas</span>
+                    </button>
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="bebida"
+                    >
+                        <span class="category-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=300&q=80"
+                                alt=""
+                            >
+                        </span>
+                        <span class="category-name">Bebidas</span>
+                    </button>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             CARDÁPIO / PRODUTOS
+        ========================== -->
+        <section class="menu-section section" id="cardapio">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">FEITO PARA VOCÊ</span>
+                        <h2>Pratos populares</h2>
+                        <p>Os favoritos dos nossos clientes.</p>
+                    </div>
+                </div>
+
+                <div class="menu-toolbar">
+
+                    <div class="menu-filters" aria-label="Filtrar produtos">
+
+                        <button
+                            class="filter-button active"
+                            type="button"
+                            data-filter="todos"
+                        >
+                            Todos
+                        </button>
+
+                        <button
+                            class="filter-button"
+                            type="button"
+                            data-filter="hamburguer"
+                        >
+                            Hambúrgueres
+                        </button>
+
+                        <button
+                            class="filter-button"
+                            type="button"
+                            data-filter="pizza"
+                        >
+                            Pizzas
+                        </button>
+
+                        <button
+                            class="filter-button"
+                            type="button"
+                            data-filter="sushi"
+                        >
+                            Sushi
+                        </button>
+
+                        <button
+                            class="filter-button"
+                            type="button"
+                            data-filter="sobremesa"
+                        >
+                            Sobremesas
+                        </button>
+
+                    </div>
+
+                    <label class="sort-control" for="sort-products">
+                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+
+                        <select id="sort-products">
+                            <option value="popular">Mais populares</option>
+                            <option value="menor-preco">Menor preço</option>
+                            <option value="maior-preco">Maior preço</option>
+                            <option value="avaliacao">Melhor avaliados</option>
+                        </select>
+                    </label>
+
+                </div>
+
+
+                <div class="products-grid" id="products-grid">
+
+                    <!-- Produto 1 -->
+                    <article
+                        class="product-card"
+                        data-id="1"
+                        data-category="hamburguer"
+                        data-name="Classic Burger"
+                        data-price="29.90"
+                        data-rating="4.9"
+                    >
+                        <div class="product-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=85"
+                                alt="Hambúrguer artesanal com queijo e salada"
+                                loading="lazy"
+                            >
+
+                            <span class="product-badge">Mais vendido</span>
+
+                            <button
+                                class="favorite-button"
+                                type="button"
+                                aria-label="Adicionar Classic Burger aos favoritos"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4,9</span>
+                                <span class="rating-count">(128)</span>
+                            </div>
+
+                            <h3>Classic Burger</h3>
+
+                            <p>
+                                Hambúrguer artesanal, queijo, alface,
+                                tomate e molho especial.
+                            </p>
+
+                            <div class="product-footer">
+                                <strong class="product-price">R$ 29,90</strong>
+
+                                <button
+                                    class="add-to-cart"
+                                    type="button"
+                                    aria-label="Adicionar Classic Burger ao carrinho"
+                                >
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Produto 2 -->
+                    <article
+                        class="product-card"
+                        data-id="2"
+                        data-category="pizza"
+                        data-name="Pizza Margherita"
+                        data-price="39.90"
+                        data-rating="4.8"
+                    >
+                        <div class="product-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=600&q=85"
+                                alt="Pizza artesanal de queijo e tomate"
+                                loading="lazy"
+                            >
+
+                            <span class="product-badge">Favorito</span>
+
+                            <button
+                                class="favorite-button"
+                                type="button"
+                                aria-label="Adicionar Pizza Margherita aos favoritos"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4,8</span>
+                                <span class="rating-count">(96)</span>
+                            </div>
+
+                            <h3>Pizza Margherita</h3>
+
+                            <p>
+                                Massa artesanal, molho de tomate,
+                                queijo e manjericão.
+                            </p>
+
+                            <div class="product-footer">
+                                <strong class="product-price">R$ 39,90</strong>
+
+                                <button
+                                    class="add-to-cart"
+                                    type="button"
+                                    aria-label="Adicionar Pizza Margherita ao carrinho"
+                                >
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Produto 3 -->
+                    <article
+                        class="product-card"
+                        data-id="3"
+                        data-category="sushi"
+                        data-name="Combo Sushi"
+                        data-price="49.90"
+                        data-rating="4.9"
+                    >
+                        <div class="product-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=85"
+                                alt="Combo de sushi japonês"
+                                loading="lazy"
+                            >
+
+                            <button
+                                class="favorite-button"
+                                type="button"
+                                aria-label="Adicionar Combo Sushi aos favoritos"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4,9</span>
+                                <span class="rating-count">(84)</span>
+                            </div>
+
+                            <h3>Combo Sushi</h3>
+
+                            <p>
+                                Seleção de sushi preparado na hora
+                                com ingredientes frescos.
+                            </p>
+
+                            <div class="product-footer">
+                                <strong class="product-price">R$ 49,90</strong>
+
+                                <button
+                                    class="add-to-cart"
+                                    type="button"
+                                    aria-label="Adicionar Combo Sushi ao carrinho"
+                                >
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Produto 4 -->
+                    <article
+                        class="product-card"
+                        data-id="4"
+                        data-category="sobremesa"
+                        data-name="Donuts especiais"
+                        data-price="12.90"
+                        data-rating="4.7"
+                    >
+                        <div class="product-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=85"
+                                alt="Donuts decorados"
+                                loading="lazy"
+                            >
+
+                            <button
+                                class="favorite-button"
+                                type="button"
+                                aria-label="Adicionar Donuts especiais aos favoritos"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4,7</span>
+                                <span class="rating-count">(65)</span>
+                            </div>
+
+                            <h3>Donuts especiais</h3>
+
+                            <p>
+                                Donuts macios com cobertura doce
+                                e sabores irresistíveis.
+                            </p>
+
+                            <div class="product-footer">
+                                <strong class="product-price">R$ 12,90</strong>
+
+                                <button
+                                    class="add-to-cart"
+                                    type="button"
+                                    aria-label="Adicionar Donuts especiais ao carrinho"
+                                >
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Produto 5 -->
+                    <article
+                        class="product-card"
+                        data-id="5"
+                        data-category="hamburguer"
+                        data-name="Cheese Bacon"
+                        data-price="34.90"
+                        data-rating="4.8"
+                    >
+                        <div class="product-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=600&q=85"
+                                alt="Hambúrguer com queijo e bacon"
+                                loading="lazy"
+                            >
+
+                            <span class="product-badge">Novidade</span>
+
+                            <button
+                                class="favorite-button"
+                                type="button"
+                                aria-label="Adicionar Cheese Bacon aos favoritos"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4,8</span>
+                                <span class="rating-count">(72)</span>
+                            </div>
+
+                            <h3>Cheese Bacon</h3>
+
+                            <p>
+                                Hambúrguer suculento com queijo,
+                                bacon crocante e molho da casa.
+                            </p>
+
+                            <div class="product-footer">
+                                <strong class="product-price">R$ 34,90</strong>
+
+                                <button
+                                    class="add-to-cart"
+                                    type="button"
+                                    aria-label="Adicionar Cheese Bacon ao carrinho"
+                                >
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Produto 6 -->
+                    <article
+                        class="product-card"
+                        data-id="6"
+                        data-category="pizza"
+                        data-name="Pizza Pepperoni"
+                        data-price="44.90"
+                        data-rating="4.9"
+                    >
+                        <div class="product-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=85"
+                                alt="Pizza de pepperoni"
+                                loading="lazy"
+                            >
+
+                            <button
+                                class="favorite-button"
+                                type="button"
+                                aria-label="Adicionar Pizza Pepperoni aos favoritos"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4,9</span>
+                                <span class="rating-count">(110)</span>
+                            </div>
+
+                            <h3>Pizza Pepperoni</h3>
+
+                            <p>
+                                Pizza com queijo derretido,
+                                pepperoni e massa artesanal.
+                            </p>
+
+                            <div class="product-footer">
+                                <strong class="product-price">R$ 44,90</strong>
+
+                                <button
+                                    class="add-to-cart"
+                                    type="button"
+                                    aria-label="Adicionar Pizza Pepperoni ao carrinho"
+                                >
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Produto 7 -->
+                    <article
+                        class="product-card"
+                        data-id="7"
+                        data-category="sobremesa"
+                        data-name="Brownie de chocolate"
+                        data-price="14.90"
+                        data-rating="4.8"
+                    >
+                        <div class="product-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=85"
+                                alt="Brownie de chocolate"
+                                loading="lazy"
+                            >
+
+                            <button
+                                class="favorite-button"
+                                type="button"
+                                aria-label="Adicionar Brownie aos favoritos"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4,8</span>
+                                <span class="rating-count">(51)</span>
+                            </div>
+
+                            <h3>Brownie de chocolate</h3>
+
+                            <p>
+                                Brownie artesanal com chocolate
+                                intenso e textura macia.
+                            </p>
+
+                            <div class="product-footer">
+                                <strong class="product-price">R$ 14,90</strong>
+
+                                <button
+                                    class="add-to-cart"
+                                    type="button"
+                                    aria-label="Adicionar Brownie ao carrinho"
+                                >
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Produto 8 -->
+                    <article
+                        class="product-card"
+                        data-id="8"
+                        data-category="bebida"
+                        data-name="Suco natural"
+                        data-price="9.90"
+                        data-rating="4.6"
+                    >
+                        <div class="product-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=85"
+                                alt="Suco natural de frutas"
+                                loading="lazy"
+                            >
+
+                            <button
+                                class="favorite-button"
+                                type="button"
+                                aria-label="Adicionar Suco natural aos favoritos"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4,6</span>
+                                <span class="rating-count">(39)</span>
+                            </div>
+
+                            <h3>Suco natural</h3>
+
+                            <p>
+                                Suco refrescante preparado
+                                com frutas selecionadas.
+                            </p>
+
+                            <div class="product-footer">
+                                <strong class="product-price">R$ 9,90</strong>
+
+                                <button
+                                    class="add-to-cart"
+                                    type="button"
+                                    aria-label="Adicionar Suco natural ao carrinho"
+                                >
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <p class="empty-products" id="empty-products" hidden>
+                    Nenhum produto encontrado.
+                </p>
+
+                <div class="load-more-container">
+                    <button
+                        class="secondary-button"
+                        id="load-more"
+                        type="button"
+                    >
+                        Ver mais produtos
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             OFERTA ESPECIAL
+        ========================== -->
+        <section class="offer-section">
+            <div class="container offer-content">
+
+                <div class="offer-text">
+                    <span class="offer-label">OFERTA ESPECIAL</span>
+
+                    <h2>
+                        Sua primeira compra
+                        <span>com desconto!</span>
+                    </h2>
+
+                    <p>
+                        Aproveite uma condição especial no seu primeiro
+                        pedido e descubra seus novos pratos favoritos.
+                    </p>
+
+                    <button
+                        class="offer-button"
+                        id="claim-offer"
+                        type="button"
+                    >
+                        Aproveitar oferta
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="offer-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=85"
+                        alt="Hambúrguer preparado na hora"
+                        loading="lazy"
+                    >
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             SOBRE A EMPRESA
+        ========================== -->
+        <section class="about-section section" id="sobre">
+            <div class="container about-content">
+
+                <div class="about-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=85"
+                        alt="Preparação de alimentos na cozinha"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="about-text">
+                    <span class="section-label">SOBRE A FOODEXPRESS</span>
+
+                    <h2>
+                        Mais sabor,
+                        <span>mais praticidade.</span>
+                    </h2>
+
+                    <p>
+                        Acreditamos que uma boa refeição transforma
+                        qualquer momento. Por isso, reunimos opções
+                        deliciosas para facilitar o seu dia.
+                    </p>
+
+                    <div class="about-features">
+
+                        <div class="about-feature">
+                            <i class="fa-solid fa-leaf"></i>
+                            <div>
+                                <strong>Ingredientes selecionados</strong>
+                                <p>Qualidade em cada pedido.</p>
+                            </div>
+                        </div>
+
+                        <div class="about-feature">
+                            <i class="fa-solid fa-motorcycle"></i>
+                            <div>
+                                <strong>Entrega prática</strong>
+                                <p>Seu pedido com comodidade.</p>
+                            </div>
+                        </div>
+
+                        <div class="about-feature">
+                            <i class="fa-solid fa-heart"></i>
+                            <div>
+                                <strong>Feito para você</strong>
+                                <p>Uma experiência simples e agradável.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             NEWSLETTER
+        ========================== -->
+        <section class="newsletter-section">
+            <div class="container newsletter-content">
+
+                <div>
+                    <h2>Receba nossas novidades!</h2>
+                    <p>
+                        Cadastre seu e-mail para acompanhar ofertas
+                        e novos pratos.
+                    </p>
+                </div>
+
+                <form id="newsletter-form" class="newsletter-form">
+                    <label class="visually-hidden" for="newsletter-email">
+                        Seu e-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="newsletter-email"
+                        name="email"
+                        placeholder="Digite seu melhor e-mail"
+                        maxlength="120"
+                        required
+                    >
+
+                    <button type="submit">
+                        Cadastrar
+                    </button>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <div class="footer-brand">
+                <a href="#inicio" class="logo">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Food<span class="logo-highlight">Express</span></span>
+                </a>
+
+                <p>
+                    Seus sabores favoritos, entregues com praticidade
+                    diretamente na sua casa.
+                </p>
+
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Navegação</h3>
+                <a href="#inicio">Início</a>
+                <a href="#categorias">Categorias</a>
+                <a href="#cardapio">Cardápio</a>
+                <a href="#sobre">Sobre nós</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Atendimento</h3>
+                <a href="#contato">Fale conosco</a>
+                <a href="#contato">Ajuda</a>
+                <a href="#contato">Perguntas frequentes</a>
+            </div>
+
+            <div class="footer-column" id="contato">
+                <h3>Contato</h3>
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    contato@foodexpress.com
+                </p>
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    (31) 3333-3333
+                </p>
+                <p>
+                    <i class="fa-solid fa-clock"></i>
+                    Todos os dias, das 10h às 23h
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>
+                    &copy; <span id="current-year">2026</span>
+                    FoodExpress. Todos os direitos reservados.
+                </p>
+
+                <div>
+                    <a href="#privacidade">Privacidade</a>
+                    <a href="#termos">Termos de uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- =========================
+         CARRINHO LATERAL
+    ========================== -->
+    <div class="overlay" id="cart-overlay" hidden></div>
+
+    <aside
+        class="cart-panel"
+        id="cart-panel"
+        aria-label="Carrinho de compras"
+        aria-hidden="true"
+        inert
+    >
+        <div class="cart-header">
+            <div>
+                <h2>Meu carrinho</h2>
+                <p id="cart-items-label">0 itens selecionados</p>
+            </div>
+
+            <button
+                class="icon-button"
+                id="close-cart"
+                type="button"
+                aria-label="Fechar carrinho"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <h3>Seu carrinho está vazio</h3>
+                <p>Adicione seus pratos favoritos para começar.</p>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="continue-shopping"
+                >
+                    Explorar cardápio
+                </button>
+            </div>
+        </div>
+
+        <div class="cart-summary">
+
+            <div class="coupon-field">
+                <label for="coupon-code">Cupom de desconto</label>
+
+                <div>
+                    <input
+                        type="text"
+                        id="coupon-code"
+                        placeholder="Digite seu cupom"
+                        maxlength="30"
+                    >
+
+                    <button type="button" id="apply-coupon">
+                        Aplicar
+                    </button>
+                </div>
+            </div>
+
+            <div class="summary-line">
+                <span>Subtotal</span>
+                <strong id="cart-subtotal">R$ 0,00</strong>
+            </div>
+
+            <div class="summary-line">
+                <span>Entrega</span>
+                <strong id="delivery-fee">R$ 5,00</strong>
+            </div>
+
+            <div class="summary-line discount-line" id="discount-line" hidden>
+                <span>Desconto</span>
+                <strong id="cart-discount">R$ 0,00</strong>
+            </div>
+
+            <div class="summary-line summary-total">
+                <span>Total</span>
+                <strong id="cart-total">R$ 5,00</strong>
+            </div>
+
+            <button
+                class="checkout-button"
+                id="checkout-button"
+                type="button"
+                disabled
+            >
+                Finalizar pedido
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <p class="secure-payment">
+                <i class="fa-solid fa-lock"></i>
+                Compra segura
+            </p>
+
+        </div>
+    </aside>
+
+
+    <!-- =========================
+         MODAL DE LOGIN E CADASTRO
+    ========================== -->
+    <div class="modal-overlay" id="auth-overlay" hidden>
+
+        <section
+            class="auth-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="auth-title"
+        >
+
+            <button
+                class="modal-close"
+                id="close-auth"
+                type="button"
+                aria-label="Fechar janela"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="auth-brand">
+                <i class="fa-solid fa-utensils"></i>
+            </div>
+
+            <h2 id="auth-title">Bem-vindo!</h2>
+
+            <p class="auth-description" id="auth-description">
+                Entre na sua conta ou crie seu cadastro para continuar.
+            </p>
+
+            <div class="auth-tabs" role="tablist">
+                <button
+                    class="auth-tab active"
+                    id="login-tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="login-form"
+                    data-auth-tab="login"
+                >
+                    Entrar
+                </button>
+
+                <button
+                    class="auth-tab"
+                    id="register-tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="register-form"
+                    data-auth-tab="register"
+                >
+                    Criar conta
+                </button>
+            </div>
+
+
+            <!-- Formulário de login -->
+            <form id="login-form" class="auth-form">
+
+                <div class="form-group">
+                    <label for="login-email">E-mail</label>
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        name="email"
+                        placeholder="seuemail@exemplo.com"
+                        maxlength="120"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Senha</label>
+
+                    <input
+                        type="password"
+                        id="login-password"
+                        name="password"
+                        placeholder="Digite sua senha"
+                        maxlength="64"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button
+                    class="forgot-password"
+                    id="forgot-password"
+                    type="button"
+                >
+                    Esqueci minha senha
+                </button>
+
+                <button type="submit" class="auth-submit">
+                    Entrar na minha conta
+                </button>
+
+                <p class="form-message" id="login-message" role="status"></p>
+
+            </form>
+
+
+            <!-- Formulário de cadastro -->
+            <form id="register-form" class="auth-form" hidden>
+
+                <div class="form-group">
+                    <label for="register-name">Nome completo</label>
+
+                    <input
+                        type="text"
+                        id="register-name"
+                        name="name"
+                        placeholder="Digite seu nome completo"
+                        minlength="3"
+                        maxlength="100"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="register-email">E-mail</label>
+
+                    <input
+                        type="email"
+                        id="register-email"
+                        name="email"
+                        placeholder="seuemail@exemplo.com"
+                        maxlength="120"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="register-phone">Telefone / WhatsApp</label>
+
+                    <input
+                        type="tel"
+                        id="register-phone"
+                        name="phone"
+                        placeholder="(31) 99999-9999"
+                        inputmode="numeric"
+                        autocomplete="tel"
+                        maxlength="15"
+                        pattern=".{14,15}"
+                        title="Digite o telefone completo com DDD."
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="register-cpf">CPF</label>
+
+                    <input
+                        type="text"
+                        id="register-cpf"
+                        name="cpf"
+                        placeholder="000.000.000-00"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        maxlength="14"
+                        pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+                        title="Digite o CPF completo."
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="register-birth">Nascimento</label>
+
+                        <input
+                            type="text"
+                            id="register-birth"
+                            name="birth"
+                            placeholder="DD/MM/AAAA"
+                            inputmode="numeric"
+                            maxlength="10"
+                            autocomplete="bday"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-cep">CEP</label>
+
+                        <input
+                            type="text"
+                            id="register-cep"
+                            name="cep"
+                            placeholder="00000-000"
+                            inputmode="numeric"
+                            maxlength="9"
+                            autocomplete="postal-code"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="register-password">Criar senha</label>
+
+                    <input
+                        type="password"
+                        id="register-password"
+                        name="password"
+                        placeholder="Mínimo de 8 caracteres"
+                        minlength="8"
+                        maxlength="64"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="register-confirm-password">
+                        Confirmar senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="register-confirm-password"
+                        name="confirm-password"
+                        placeholder="Digite a senha novamente"
+                        minlength="8"
+                        maxlength="64"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <label class="checkbox-label">
+                    <input
+                        type="checkbox"
+                        id="accept-terms"
+                        name="accept-terms"
+                        required
+                    >
+
+                    <span>
+                        Li e aceito os
+                        <a href="#termos">termos de uso</a>
+                        e a
+                        <a href="#privacidade">política de privacidade</a>.
+                    </span>
+                </label>
+
+                <button type="submit" class="auth-submit">
+                    Criar minha conta
+                </button>
+
+                <p
+                    class="form-message"
+                    id="register-message"
+                    role="status"
+                ></p>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL DE ENDEREÇO
+    ========================== -->
+    <div class="modal-overlay" id="address-overlay" hidden>
+
+        <section
+            class="address-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="address-title"
+        >
+
+            <button
+                class="modal-close"
+                id="close-address"
+                type="button"
+                aria-label="Fechar"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h2 id="address-title">Onde vamos entregar?</h2>
+
+            <p>
+                Informe seu endereço para organizar a entrega do seu pedido.
+            </p>
+
+            <form id="address-form">
+
+                <div class="form-group">
+                    <label for="address-cep">CEP</label>
+
+                    <input
+                        type="text"
+                        id="address-cep"
+                        name="cep"
+                        placeholder="00000-000"
+                        inputmode="numeric"
+                        maxlength="9"
+                        autocomplete="postal-code"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="address-street">Rua / Avenida</label>
+
+                    <input
+                        type="text"
+                        id="address-street"
+                        name="street"
+                        placeholder="Nome da rua"
+                        maxlength="120"
+                        autocomplete="address-line1"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="address-number">Número</label>
+
+                        <input
+                            type="text"
+                            id="address-number"
+                            name="number"
+                            placeholder="Número"
+                            inputmode="numeric"
+                            maxlength="10"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address-complement">Complemento</label>
+
+                        <input
+                            type="text"
+                            id="address-complement"
+                            name="complement"
+                            placeholder="Apto, bloco..."
+                            maxlength="60"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="address-neighborhood">Bairro</label>
+
+                    <input
+                        type="text"
+                        id="address-neighborhood"
+                        name="neighborhood"
+                        placeholder="Seu bairro"
+                        maxlength="80"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="address-city">Cidade</label>
+
+                        <input
+                            type="text"
+                            id="address-city"
+                            name="city"
+                            placeholder="Sua cidade"
+                            maxlength="80"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address-state">UF</label>
+
+                        <input
+                            type="text"
+                            id="address-state"
+                            name="state"
+                            placeholder="MG"
+                            maxlength="2"
+                            pattern="[A-Za-z]{2}"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <button type="submit" class="auth-submit">
+                    Salvar endereço
+                </button>
+
+                <p class="form-message" id="address-message" role="status"></p>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- Notificações -->
+    <div
+        class="toast-container"
+        id="toast-container"
+        aria-live="polite"
+        aria-atomic="true"
+    ></div>
+
+</body>
+</html>
